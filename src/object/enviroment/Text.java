@@ -32,6 +32,10 @@ public class Text extends DimensionalObject {
         g.setFont(Core.defaultFont);
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
     @Override
     public Shape getShape(Graphics2D g) {
         return null;

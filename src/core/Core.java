@@ -70,7 +70,7 @@ public class Core extends Canvas implements Runnable {
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 if (DEBUG) {
-                    //TODO add fps counter to game
+                    objectManager.getFpsText().setText("FPS: "+frames);
                 }
                 frames = 0;
             }

@@ -21,9 +21,8 @@ public class ObjectManager {
     private Text fpsText;
 
     public void initialize() {
-        player = new Player(0, 0, Color.GRAY, 30, 30, true);
-        fpsText = new Text(100, 100, Color.GRAY, "FPS", new Font("default", Font.BOLD, 15));
-        new Text(100, 200, Color.GRAY, "FPS");
+        player = new Player(0, 0, Color.GRAY, 25, 25, true);
+        fpsText = new Text(10, 20, Color.GRAY, "FPS", new Font("default", Font.BOLD, 15));
     }
 
     public Player getPlayer() {
@@ -85,4 +84,7 @@ public class ObjectManager {
         return basicObjects;
     }
 
+    public Text getFpsText() {
+        return fpsText;
+    }
 }

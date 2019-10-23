@@ -22,7 +22,7 @@ public class MovementHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        int movementVelocity = 4;
+        int movementVelocity = 2;
         Player player = objectManager.getPlayer();
         if(key == KeyEvent.VK_W){
             player.setYVelocity(-movementVelocity);
