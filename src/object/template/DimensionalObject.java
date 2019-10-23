@@ -1,5 +1,7 @@
 package object.template;
 
+import core.GameMain;
+
 import java.awt.*;
 
 public abstract class DimensionalObject extends BasicObject implements ObjectToShow {
@@ -39,6 +41,17 @@ public abstract class DimensionalObject extends BasicObject implements ObjectToS
             g.draw(getShape(g));
     }
 
+
+    @Override
+    public void register() {
+        GameMain.core.getObjectManager().addDimensionalObject(this);
+    }
+
+    @Override
+    public void tick() {
+        return;
+    }
+
     public double getHeight() {
         return height;
     }
@@ -53,11 +66,6 @@ public abstract class DimensionalObject extends BasicObject implements ObjectToS
 
     public boolean isFill() {
         return fill;
-    }
-
-    public void teleport(double xDestination, double yDestination){
-        setX(xDestination);
-        setY(yDestination);
     }
 
 }

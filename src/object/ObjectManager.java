@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class ObjectManager {
 
+    private ArrayList<BasicObject> basicObjects = new ArrayList<>();
     private ArrayList<DimensionalObject> dimensionalObjects = new ArrayList<>();
     private ArrayList<MovingObject> movingObjects = new ArrayList<>();
 
@@ -19,15 +20,10 @@ public class ObjectManager {
     private Player player;
     private Text fpsText;
 
-    public ObjectManager(){
-        initialize();
-    }
-
     public void initialize() {
         player = new Player(0, 0, Color.GRAY, 30, 30, true);
-        addMovingObject(player);
-        fpsText = new Text(0, 0, Color.GRAY, 30, 30, "FPS");
-        addMovingObject(fpsText);
+        fpsText = new Text(100, 100, Color.GRAY, "FPS", new Font("default", Font.BOLD, 15));
+        new Text(100, 200, Color.GRAY, "FPS");
     }
 
     public Player getPlayer() {
@@ -46,6 +42,10 @@ public class ObjectManager {
         }
     }
 
+    public void addBasicObject(BasicObject object){
+        basicObjects.add(object);
+    }
+
     public void addMovingObject(MovingObject object){
         movingObjects.add(object);
     }
@@ -56,6 +56,10 @@ public class ObjectManager {
 
     public ArrayList<DimensionalObject> getDimensionalObjects() {
         return dimensionalObjects;
+    }
+
+    public ArrayList<MovingObject> getMovingObjects() {
+        return movingObjects;
     }
 
     public ArrayList<ObjectToShow> getObjectsToShow() {
@@ -69,9 +73,6 @@ public class ObjectManager {
         return list;
     }
 
-    public ArrayList<MovingObject> getMovingObjects() {
-        return movingObjects;
-    }
 
     public ArrayList<BasicObject> getAllObjects(){
         ArrayList<BasicObject> list = new ArrayList<>();
@@ -80,5 +81,8 @@ public class ObjectManager {
         return list;
     }
 
+    public ArrayList<BasicObject> getBasicObjects() {
+        return basicObjects;
+    }
 
 }

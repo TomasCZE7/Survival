@@ -1,14 +1,22 @@
 package object.template;
 
+import core.GameMain;
+
 import java.awt.*;
 
-public abstract class BasicObject {
+public abstract class BasicObject implements Registrable {
 
     private double x, y;
 
     public BasicObject(double x, double y){
         this.x = x;
         this.y = y;
+        register();
+    }
+
+    @Override
+    public void register() {
+        GameMain.core.getObjectManager().addBasicObject(this);
     }
 
     public double getX() {
@@ -25,5 +33,10 @@ public abstract class BasicObject {
 
     public void setX(double x) {
         this.x = x;
+    }
+
+    public void teleport(double xDestination, double yDestination){
+        setX(xDestination);
+        setY(yDestination);
     }
 }

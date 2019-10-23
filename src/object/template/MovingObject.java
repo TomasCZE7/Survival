@@ -1,5 +1,7 @@
 package object.template;
 
+import core.GameMain;
+
 import java.awt.*;
 
 public abstract class MovingObject extends DimensionalObject {
@@ -23,6 +25,10 @@ public abstract class MovingObject extends DimensionalObject {
         super(x, y, color, size, fill);
     }
 
+    @Override
+    public void register() {
+        GameMain.core.getObjectManager().addMovingObject(this);
+    }
 
     @Override
     public Shape getShape(Graphics2D g) {

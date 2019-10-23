@@ -9,11 +9,9 @@ import java.awt.event.KeyListener;
 public class MovementHandler implements KeyListener {
 
     private ObjectManager objectManager;
-    private Player player;
 
     public MovementHandler(ObjectManager objectManager){
         this.objectManager = objectManager;
-        this.player = objectManager.getPlayer();
     }
 
     @Override
@@ -25,6 +23,7 @@ public class MovementHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         int movementVelocity = 4;
+        Player player = objectManager.getPlayer();
         if(key == KeyEvent.VK_W){
             player.setYVelocity(-movementVelocity);
         }
@@ -42,6 +41,7 @@ public class MovementHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
+        Player player = objectManager.getPlayer();
         if(key == KeyEvent.VK_W){
             player.setYVelocity(0);
         }

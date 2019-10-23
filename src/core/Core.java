@@ -12,6 +12,7 @@ public class Core extends Canvas implements Runnable {
 
     public static final int WIDTH = 1080, HEIGHT = 840;
     public static final boolean DEBUG = true;
+    public static final Font defaultFont = new Font("default", Font.PLAIN, 15);
 
     private boolean running = false;
     private Thread thread;
@@ -47,6 +48,7 @@ public class Core extends Canvas implements Runnable {
 
     @Override
     public void run() {
+        objectManager.initialize();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -95,7 +97,7 @@ public class Core extends Canvas implements Runnable {
         Graphics2D g2d = (Graphics2D) g;
 
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, WIDTH, HEIGHT-100);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
 
         objectManager.render(g2d);
 
