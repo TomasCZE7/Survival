@@ -10,7 +10,7 @@ public class Core extends Canvas implements Runnable {
 
     private Window mainWindow;
 
-    public static final int WIDTH = 1080, HEIGHT = 840;
+    public static final int WIDTH = 1080, HEIGHT = 740;
     public static final boolean DEBUG = true;
     public static final Font defaultFont = new Font("default", Font.PLAIN, 15);
 

@@ -37,8 +37,7 @@ public abstract class MovingObject extends DimensionalObject {
 
     @Override
     public void tick() {
-        setX(getX() + xVelocity);
-        setY(getY() + yVelocity);
+        move(getXVelocity(), getYVelocity());
     }
 
     public double getXVelocity() {

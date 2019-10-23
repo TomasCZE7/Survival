@@ -1,6 +1,8 @@
 package object;
 
+import core.Core;
 import object.ally.Player;
+import object.enviroment.PlayerMovementArea;
 import object.enviroment.Text;
 import object.template.BasicObject;
 import object.template.DimensionalObject;
@@ -18,11 +20,13 @@ public class ObjectManager {
 
     //Main objects
     private Player player;
+    private PlayerMovementArea playerMovementArea;
     private Text fpsText;
 
     public void initialize() {
-        player = new Player(0, 0, Color.GRAY, 25, 25, true);
+        player = new Player((Core.WIDTH+20)/2.0, (Core.HEIGHT+20)/2.0, Color.GRAY, 20, 20, true);
         fpsText = new Text(10, 20, Color.GRAY, "FPS", new Font("default", Font.BOLD, 15));
+        playerMovementArea = new PlayerMovementArea(Core.WIDTH/3.0, Core.HEIGHT/4.5);
     }
 
     public Player getPlayer() {
@@ -86,5 +90,9 @@ public class ObjectManager {
 
     public Text getFpsText() {
         return fpsText;
+    }
+
+    public PlayerMovementArea getPlayerMovementArea() {
+        return playerMovementArea;
     }
 }

@@ -39,4 +39,9 @@ public abstract class BasicObject implements Registrable {
         setX(xDestination);
         setY(yDestination);
     }
+
+    public void move(double x, double y){
+        setX(getX() + x);
+        setY(getY() + y);
+    }
 }
