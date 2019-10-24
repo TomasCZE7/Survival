@@ -1,7 +1,9 @@
 package object.ally;
 
+import com.sun.tools.javac.Main;
 import core.GameMain;
 import object.enviroment.PlayerMovementArea;
+import object.template.BasicObject;
 import object.template.MovingObject;
 
 import java.awt.*;
@@ -29,23 +31,31 @@ public class Player extends MovingObject {
 
     }
 
-    public void checkMovement(){
+    private void checkMovement(){
         PlayerMovementArea area = GameMain.core.getObjectManager().getPlayerMovementArea();
         double xDestination = getX(), yDestination = getY();
-
+        double xDifference = 0, yDifference = 0;
         if(getX() < area.getX()){
+            xDifference = area.getX()-getX();
             xDestination = area.getX();
         }
         if(getX()+getHeight() > area.getX() + area.getHeight()){
+            xDifference = getX()+getHeight() - area.getX() + area.getHeight();
             xDestination = area.getX()+area.getWidth()-getWidth();
         }
         if(getY() < area.getY()){
+            yDifference = area.getY() - getY();
             yDestination = area.getY();
         }
         if(getY()+getWidth() > area.getY() + area.getWidth()){
+            yDifference = getY()+getWidth() - area.getY() + area.getWidth();
             yDestination = area.getY()+area.getHeight()-getHeight();
         }
+
         teleport(xDestination, yDestination);
+        for(BasicObject object : GameMain.core.getObjectManager().getAllObjects()){
+            object.move(xDifference, yDifference);
+        }
     }
 
 }

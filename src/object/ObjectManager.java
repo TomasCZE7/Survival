@@ -4,6 +4,7 @@ import core.Core;
 import object.ally.Player;
 import object.enviroment.PlayerMovementArea;
 import object.enviroment.Text;
+import object.enviroment.Wall;
 import object.template.BasicObject;
 import object.template.DimensionalObject;
 import object.template.MovingObject;
@@ -14,9 +15,7 @@ import java.util.ArrayList;
 
 public class ObjectManager {
 
-    private ArrayList<BasicObject> basicObjects = new ArrayList<>();
-    private ArrayList<DimensionalObject> dimensionalObjects = new ArrayList<>();
-    private ArrayList<MovingObject> movingObjects = new ArrayList<>();
+    private ArrayList<BasicObject> objects = new ArrayList<>();
 
     //Main objects
     private Player player;
@@ -25,8 +24,8 @@ public class ObjectManager {
 
     public void initialize() {
         player = new Player((Core.WIDTH+20)/2.0, (Core.HEIGHT+20)/2.0, Color.GRAY, 20, 20, true);
-        fpsText = new Text(10, 20, Color.GRAY, "FPS", new Font("default", Font.BOLD, 15));
-        playerMovementArea = new PlayerMovementArea(Core.WIDTH/3.0, Core.HEIGHT/4.5);
+        fpsText = new Text(10, 20, Color.GRAY, "FPS: ", new Font("default", Font.BOLD, 15));
+        playerMovementArea = new PlayerMovementArea();
     }
 
     public Player getPlayer() {
@@ -45,24 +44,36 @@ public class ObjectManager {
         }
     }
 
-    public void addBasicObject(BasicObject object){
-        basicObjects.add(object);
+    public void addObject(BasicObject object){
+        objects.add(object);
     }
 
     public void addMovingObject(MovingObject object){
-        movingObjects.add(object);
+        addObject(object);
     }
 
     public void addDimensionalObject(DimensionalObject object){
-        dimensionalObjects.add(object);
+        addObject(object);
     }
 
     public ArrayList<DimensionalObject> getDimensionalObjects() {
-        return dimensionalObjects;
+        ArrayList<DimensionalObject> objects = new ArrayList<>();
+        for(BasicObject bs : getAllObjects()){
+            if(bs instanceof DimensionalObject){
+                objects.add((DimensionalObject) bs);
+            }
+        }
+        return objects;
     }
 
     public ArrayList<MovingObject> getMovingObjects() {
-        return movingObjects;
+        ArrayList<MovingObject> objects = new ArrayList<>();
+        for (BasicObject bs : getAllObjects()) {
+            if (bs instanceof MovingObject) {
+                objects.add((MovingObject) bs);
+            }
+        }
+        return objects;
     }
 
     public ArrayList<ObjectToShow> getObjectsToShow() {
@@ -78,14 +89,7 @@ public class ObjectManager {
 
 
     public ArrayList<BasicObject> getAllObjects(){
-        ArrayList<BasicObject> list = new ArrayList<>();
-        list.addAll(getMovingObjects());
-        list.addAll(getDimensionalObjects());
-        return list;
-    }
-
-    public ArrayList<BasicObject> getBasicObjects() {
-        return basicObjects;
+        return objects;
     }
 
     public Text getFpsText() {

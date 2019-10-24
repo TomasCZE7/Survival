@@ -55,4 +55,5 @@ public class MovementHandler implements KeyListener {
             player.setXVelocity(0);
         }
     }
+
 }

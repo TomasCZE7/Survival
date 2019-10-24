@@ -16,7 +16,7 @@ public abstract class BasicObject implements Registrable {
 
     @Override
     public void register() {
-        GameMain.core.getObjectManager().addBasicObject(this);
+        GameMain.core.getObjectManager().addObject(this);
     }
 
     public double getX() {
