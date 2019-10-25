@@ -4,18 +4,13 @@ import core.Core;
 import object.ally.Player;
 import object.enviroment.PlayerMovementArea;
 import object.enviroment.Text;
-import object.enviroment.Wall;
-import object.template.BasicObject;
-import object.template.DimensionalObject;
-import object.template.MovingObject;
-import object.template.ObjectToShow;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class ObjectManager {
 
-    private ArrayList<BasicObject> objects = new ArrayList<>();
+    private ArrayList<Coordinates> objects = new ArrayList<>();
 
     //Main objects
     private Player player;
@@ -44,7 +39,7 @@ public class ObjectManager {
         }
     }
 
-    public void addObject(BasicObject object){
+    public void addObject(Coordinates object){
         objects.add(object);
     }
 
@@ -58,7 +53,7 @@ public class ObjectManager {
 
     public ArrayList<DimensionalObject> getDimensionalObjects() {
         ArrayList<DimensionalObject> objects = new ArrayList<>();
-        for(BasicObject bs : getAllObjects()){
+        for(Coordinates bs : getAllObjects()){
             if(bs instanceof DimensionalObject){
                 objects.add((DimensionalObject) bs);
             }
@@ -68,7 +63,7 @@ public class ObjectManager {
 
     public ArrayList<MovingObject> getMovingObjects() {
         ArrayList<MovingObject> objects = new ArrayList<>();
-        for (BasicObject bs : getAllObjects()) {
+        for (Coordinates bs : getAllObjects()) {
             if (bs instanceof MovingObject) {
                 objects.add((MovingObject) bs);
             }
@@ -78,7 +73,7 @@ public class ObjectManager {
 
     public ArrayList<ObjectToShow> getObjectsToShow() {
         ArrayList<ObjectToShow> list = new ArrayList<>();
-        for(BasicObject object : getAllObjects()){
+        for(Coordinates object : getAllObjects()){
             if(object instanceof ObjectToShow){
                 ObjectToShow objectToShow = (ObjectToShow) object;
                 list.add(objectToShow);
@@ -88,7 +83,7 @@ public class ObjectManager {
     }
 
 
-    public ArrayList<BasicObject> getAllObjects(){
+    public ArrayList<Coordinates> getAllObjects(){
         return objects;
     }
 

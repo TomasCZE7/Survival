@@ -1,12 +1,10 @@
-package object.template;
+package object;
 
 import core.GameMain;
 
 import java.awt.*;
 
 public abstract class MovingObject extends DimensionalObject {
-
-    private double xVelocity = 0, yVelocity = 0;
 
     public MovingObject(double x, double y, Color color, double width, double height) {
         super(x, y, color, width, height);
@@ -39,21 +37,4 @@ public abstract class MovingObject extends DimensionalObject {
     public void tick() {
         move(getXVelocity(), getYVelocity());
     }
-
-    public double getXVelocity() {
-        return xVelocity;
-    }
-
-    public double getYVelocity() {
-        return yVelocity;
-    }
-
-    public void setYVelocity(double yVelocity) {
-        this.yVelocity = yVelocity;
-    }
-
-    public void setXVelocity(double xVelocity) {
-        this.xVelocity = xVelocity;
-    }
-
 }

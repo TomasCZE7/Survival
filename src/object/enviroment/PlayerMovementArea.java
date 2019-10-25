@@ -1,10 +1,6 @@
 package object.enviroment;
 
 import core.Core;
-import object.template.DimensionalObject;
-
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 public class PlayerMovementArea {
 

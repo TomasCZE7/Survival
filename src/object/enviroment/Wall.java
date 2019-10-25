@@ -1,6 +1,6 @@
 package object.enviroment;
 
-import object.template.DimensionalObject;
+import object.DimensionalObject;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;

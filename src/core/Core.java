@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 import core.component.Window;
 import handler.MovementHandler;
 import object.ObjectManager;
+import object.entity.EntityManager;
 
 public class Core extends Canvas implements Runnable {
 
@@ -18,11 +19,13 @@ public class Core extends Canvas implements Runnable {
     private Thread thread;
 
     private ObjectManager objectManager;
+    private EntityManager entityManager;
 
     Core() {
         mainWindow = new Window(WIDTH, HEIGHT, "2D Platformer");
         mainWindow.getWindow().add(this);
         objectManager = new ObjectManager();
+        entityManager = new EntityManager();
         initializeHandlers();
         start();
     }
@@ -103,6 +106,10 @@ public class Core extends Canvas implements Runnable {
 
         g.dispose();
         bs.show();
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     public ObjectManager getObjectManager() {

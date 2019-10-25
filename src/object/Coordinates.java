@@ -1,14 +1,12 @@
-package object.template;
+package object;
 
 import core.GameMain;
 
-import java.awt.*;
-
-public abstract class BasicObject implements Registrable {
+public abstract class Coordinates implements Registrable {
 
     private double x, y;
 
-    public BasicObject(double x, double y){
+    public Coordinates(double x, double y){
         this.x = x;
         this.y = y;
         register();

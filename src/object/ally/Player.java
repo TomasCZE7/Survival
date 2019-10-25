@@ -1,10 +1,9 @@
 package object.ally;
 
-import com.sun.tools.javac.Main;
 import core.GameMain;
 import object.enviroment.PlayerMovementArea;
-import object.template.BasicObject;
-import object.template.MovingObject;
+import object.Coordinates;
+import object.MovingObject;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -53,7 +52,7 @@ public class Player extends MovingObject {
         }
 
         teleport(xDestination, yDestination);
-        for(BasicObject object : GameMain.core.getObjectManager().getAllObjects()){
+        for(Coordinates object : GameMain.core.getObjectManager().getAllObjects()){
             object.move(xDifference, yDifference);
         }
     }

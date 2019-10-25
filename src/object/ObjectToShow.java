@@ -1,4 +1,4 @@
-package object.template;
+package object;
 
 import java.awt.*;
 

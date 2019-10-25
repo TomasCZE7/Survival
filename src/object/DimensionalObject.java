@@ -1,10 +1,10 @@
-package object.template;
+package object;
 
 import core.GameMain;
 
 import java.awt.*;
 
-public abstract class DimensionalObject extends BasicObject implements ObjectToShow {
+public abstract class DimensionalObject extends Velocity implements ObjectToShow {
 
     private double width, height;
     private Color color;

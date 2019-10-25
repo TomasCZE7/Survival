@@ -1,9 +1,7 @@
 package object.enviroment;
 
 import core.Core;
-import core.GameMain;
-import object.template.DimensionalObject;
-import object.template.MovingObject;
+import object.DimensionalObject;
 
 import java.awt.*;
 
