@@ -1,7 +1,7 @@
 package handler;
 
 import object.ObjectManager;
-import object.ally.Player;
+import object.entity.ally.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

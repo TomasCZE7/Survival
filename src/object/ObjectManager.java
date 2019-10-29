@@ -1,7 +1,7 @@
 package object;
 
 import core.Core;
-import object.ally.Player;
+import object.entity.ally.Player;
 import object.enviroment.PlayerMovementArea;
 import object.enviroment.Text;
 

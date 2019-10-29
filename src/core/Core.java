@@ -81,8 +81,10 @@ public class Core extends Canvas implements Runnable {
         stop();
     }
 
-    private void tick() {
+    private void tick()
+    {
         objectManager.tick();
+        entityManager.tick();
     }
 
     private void render() {
@@ -103,6 +105,7 @@ public class Core extends Canvas implements Runnable {
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         objectManager.render(g2d);
+        entityManager.render(g2d);
 
         g.dispose();
         bs.show();

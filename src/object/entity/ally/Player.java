@@ -1,14 +1,14 @@
-package object.ally;
+package object.entity.ally;
 
 import core.GameMain;
+import object.entity.Entity;
 import object.enviroment.PlayerMovementArea;
 import object.Coordinates;
-import object.MovingObject;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public class Player extends MovingObject {
+public class Player extends Entity {
 
     public Player(double x, double y, Color color, double width, double height, boolean fill) {
         super(x, y, color, width, height, fill);
@@ -57,4 +57,13 @@ public class Player extends MovingObject {
         }
     }
 
+    @Override
+    public double getDefaultDamage() {
+        return 3;
+    }
+
+    @Override
+    public double getMaxHealth() {
+        return 100;
+    }
 }

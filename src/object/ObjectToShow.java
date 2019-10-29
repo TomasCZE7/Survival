@@ -2,10 +2,8 @@ package object;
 
 import java.awt.*;
 
-public interface ObjectToShow {
+public interface ObjectToShow extends ObjectToRender {
 
-    void render(Graphics2D g);
-    void tick();
     Shape getShape(Graphics2D g);
 
 }
