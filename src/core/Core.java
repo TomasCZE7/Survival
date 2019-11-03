@@ -21,10 +21,13 @@ public class Core extends Canvas implements Runnable {
     private ObjectManager objectManager;
     private EntityManager entityManager;
 
+    private DebugManager debugManager;
+
     Core() {
         mainWindow = new Window(WIDTH, HEIGHT, "2D Platformer");
         mainWindow.getWindow().add(this);
         objectManager = new ObjectManager();
+        debugManager = new DebugManager();
         entityManager = new EntityManager();
         initializeHandlers();
         start();
@@ -52,6 +55,10 @@ public class Core extends Canvas implements Runnable {
     @Override
     public void run() {
         objectManager.initialize();
+        debugManager.addDebug("DEBUG", true);
+        debugManager.addDebug("sdf", true);
+        debugManager.addDebug("DEBUdfG", true);
+        debugManager.addDebug("DEBsdfsdfsdUG", true);
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;

@@ -4,6 +4,7 @@ import core.Core;
 import object.entity.ally.Player;
 import object.enviroment.PlayerMovementArea;
 import object.enviroment.Text;
+import object.enviroment.Wall;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class ObjectManager {
 
     public void initialize() {
         player = new Player((Core.WIDTH+20)/2.0, (Core.HEIGHT+20)/2.0, Color.GRAY, 20, 20, true);
-        fpsText = new Text(10, 20, Color.GRAY, "FPS: ", new Font("default", Font.BOLD, 15));
+        fpsText = new Text(10, 20, Color.GRAY, "FPS: ", new Font("default", Font.BOLD, 15), true);
         playerMovementArea = new PlayerMovementArea();
     }
 
@@ -76,6 +77,17 @@ public class ObjectManager {
         for(Coordinates object : getAllObjects()){
             if(object instanceof ObjectToShow){
                 ObjectToShow objectToShow = (ObjectToShow) object;
+                list.add(objectToShow);
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<ObjectToRender> getObjectsToRender() {
+        ArrayList<ObjectToRender> list = new ArrayList<>();
+        for(Coordinates object : getAllObjects()){
+            if(object instanceof ObjectToRender){
+                ObjectToRender objectToShow = (ObjectToRender) object;
                 list.add(objectToShow);
             }
         }

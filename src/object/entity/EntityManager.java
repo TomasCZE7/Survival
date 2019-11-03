@@ -1,6 +1,7 @@
 package object.entity;
 
 import object.ObjectToRender;
+import object.ObjectToShow;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -23,7 +24,9 @@ public class EntityManager implements ObjectToRender {
 
     @Override
     public void render(Graphics2D g) {
-        entities.forEach((entity -> render(g)));
+        for(Entity entity : entities){
+            entity.render(g);
+        }
     }
 
     @Override

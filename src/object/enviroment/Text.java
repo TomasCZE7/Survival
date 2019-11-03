@@ -9,15 +9,25 @@ public class Text extends DimensionalObject {
 
     private String text;
     private Font font;
+    private boolean fixedOnScreen;
 
-    public Text(double x, double y, Color color, String text) {
+    public Text(double x, double y, Color color, String text, boolean fixedOnScreen) {
         super(x, y, color, 0, 0);
         this.text = text;
+        this.fixedOnScreen = fixedOnScreen;
+    }
+
+    public Text(double x, double y, Color color, String text, Font font, boolean fixedOnScreen) {
+        this(x, y, color, text, fixedOnScreen);
+        this.font = font;
+    }
+
+    public Text(double x, double y, Color color, String text) {
+        super(x, y, color, 0, 0, false);
     }
 
     public Text(double x, double y, Color color, String text, Font font) {
-        this(x, y, color, text);
-        this.font = font;
+        this(x, y, color, text, font, false);
     }
 
     @Override
@@ -28,6 +38,18 @@ public class Text extends DimensionalObject {
         }
         g.drawString(text, (int)getX(), (int)getY());
         g.setFont(Core.defaultFont);
+    }
+
+    public boolean isFixedOnScreen() {
+        return fixedOnScreen;
+    }
+
+    public void setFont(Font font) {
+        this.font = font;
+    }
+
+    public Font getFont() {
+        return font;
     }
 
     public void setText(String text) {

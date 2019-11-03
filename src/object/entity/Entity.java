@@ -29,7 +29,7 @@ public abstract class Entity extends MovingObject implements Registrable, Health
         this(x, y, color, size.getWidth(), size.getHeight(), fill);
     }
 
-    @Override
+   @Override
     public void register() {
         GameMain.core.getEntityManager().addEntity(this);
     }

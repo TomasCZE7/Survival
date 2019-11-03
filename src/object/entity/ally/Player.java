@@ -1,9 +1,11 @@
 package object.entity.ally;
 
 import core.GameMain;
+import object.MovingObject;
 import object.entity.Entity;
 import object.enviroment.PlayerMovementArea;
 import object.Coordinates;
+import object.enviroment.Text;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -53,6 +55,12 @@ public class Player extends Entity {
 
         teleport(xDestination, yDestination);
         for(Coordinates object : GameMain.core.getObjectManager().getAllObjects()){
+            if(object instanceof Text){
+                Text text = (Text) object;
+                if(text.isFixedOnScreen()){
+                    continue;
+                }
+            }
             object.move(xDifference, yDifference);
         }
     }

@@ -49,7 +49,7 @@ public abstract class DimensionalObject extends Velocity implements ObjectToShow
 
     @Override
     public void tick() {
-        return;
+
     }
 
     public double getHeight() {
