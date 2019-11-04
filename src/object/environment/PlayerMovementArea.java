@@ -1,4 +1,4 @@
-package object.enviroment;
+package object.environment;
 
 import core.Core;
 

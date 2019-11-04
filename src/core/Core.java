@@ -2,10 +2,14 @@ package core;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
+
 import core.component.Window;
 import handler.MovementHandler;
+import helper.EnvironmentGenerator;
 import object.ObjectManager;
 import object.entity.EntityManager;
+import object.entity.ai.BasicZombie;
 
 public class Core extends Canvas implements Runnable {
 
@@ -18,19 +22,26 @@ public class Core extends Canvas implements Runnable {
     private boolean running = false;
     private Thread thread;
 
+    private EnvironmentGenerator environmentGenerator;
+
     private ObjectManager objectManager;
     private EntityManager entityManager;
 
     private DebugManager debugManager;
 
-    Core() {
+    Core(){
         mainWindow = new Window(WIDTH, HEIGHT, "2D Platformer");
         mainWindow.getWindow().add(this);
         objectManager = new ObjectManager();
         debugManager = new DebugManager();
         entityManager = new EntityManager();
+        environmentGenerator = new EnvironmentGenerator();
         initializeHandlers();
         start();
+        generateEnvironment();
+    }
+
+    private void generateEnvironment() {
     }
 
     private void initializeHandlers(){
@@ -55,6 +66,7 @@ public class Core extends Canvas implements Runnable {
     @Override
     public void run() {
         objectManager.initialize();
+        environmentGenerator.generateAI(8);
         debugManager.addDebug("DEBUG", true);
         debugManager.addDebug("sdf", true);
         debugManager.addDebug("DEBUdfG", true);

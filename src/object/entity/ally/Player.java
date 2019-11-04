@@ -1,19 +1,22 @@
 package object.entity.ally;
 
 import core.GameMain;
-import object.MovingObject;
 import object.entity.Entity;
-import object.enviroment.PlayerMovementArea;
+import object.environment.PlayerMovementArea;
 import object.Coordinates;
-import object.enviroment.Text;
+import object.environment.Text;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public class Player extends Entity {
 
+    public double realX, realY;
+
     public Player(double x, double y, Color color, double width, double height, boolean fill) {
         super(x, y, color, width, height, fill);
+        realX = getX();
+        realY = getY();
     }
 
     @Override
@@ -63,6 +66,19 @@ public class Player extends Entity {
             }
             object.move(xDifference, yDifference);
         }
+
+        for(Entity entity : GameMain.core.getEntityManager().getEntities()){
+            if(entity == this) continue;
+            entity.move(xDifference, yDifference);
+        }
+    }
+
+    public double getRealX() {
+        return realX;
+    }
+
+    public double getRealY() {
+        return realY;
     }
 
     @Override

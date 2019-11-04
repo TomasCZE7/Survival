@@ -1,8 +1,6 @@
 package core;
 
-import object.ObjectManager;
-import object.ObjectToRender;
-import object.enviroment.Text;
+import object.environment.Text;
 
 import java.awt.*;
 import java.util.HashMap;

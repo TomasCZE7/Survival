@@ -2,9 +2,9 @@ package object;
 
 import core.Core;
 import object.entity.ally.Player;
-import object.enviroment.PlayerMovementArea;
-import object.enviroment.Text;
-import object.enviroment.Wall;
+import object.environment.PlayerMovementArea;
+import object.environment.Text;
+import object.environment.Wall;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ public class ObjectManager {
         player = new Player((Core.WIDTH+20)/2.0, (Core.HEIGHT+20)/2.0, Color.GRAY, 20, 20, true);
         fpsText = new Text(10, 20, Color.GRAY, "FPS: ", new Font("default", Font.BOLD, 15), true);
         playerMovementArea = new PlayerMovementArea();
+        new Wall(50, 50, Color.BLUE, 90, 60);
     }
 
     public Player getPlayer() {
