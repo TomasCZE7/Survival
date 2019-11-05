@@ -16,7 +16,6 @@ public class EnvironmentGenerator {
         this.random = new Random();
     }
 
-    //TODO long
     public double[] getRandomLocationOnScreen(){
         double randomX = Core.WIDTH * random.nextDouble();
         double randomY =  Core.HEIGHT * random.nextDouble();

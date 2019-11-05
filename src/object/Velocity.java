@@ -12,6 +12,11 @@ public abstract class Velocity extends Coordinates {
         return xVelocity;
     }
 
+    public void resetVelocity(){
+        setXVelocity(0);
+        setYVelocity(0);
+    }
+
     public void setXVelocity(double xVelocity) {
         this.xVelocity = xVelocity;
     }

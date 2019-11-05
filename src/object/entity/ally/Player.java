@@ -39,20 +39,24 @@ public class Player extends Entity {
         PlayerMovementArea area = GameMain.core.getObjectManager().getPlayerMovementArea();
         double xDestination = getX(), yDestination = getY();
         double xDifference = 0, yDifference = 0;
+        //LEFT
         if(getX() < area.getX()){
             xDifference = area.getX()-getX();
             xDestination = area.getX();
         }
+        //RIGHT
         if(getX()+getHeight() > area.getX() + area.getHeight()){
-            xDifference = getX()+getHeight() - area.getX() + area.getHeight();
+            xDifference =  (area.getX() + area.getHeight()) - (getX()+getHeight());
             xDestination = area.getX()+area.getWidth()-getWidth();
         }
+        //UP
         if(getY() < area.getY()){
             yDifference = area.getY() - getY();
             yDestination = area.getY();
         }
+        //DOWN
         if(getY()+getWidth() > area.getY() + area.getWidth()){
-            yDifference = getY()+getWidth() - area.getY() + area.getWidth();
+            yDifference = (area.getY() + area.getWidth()) - (getY() + getWidth());
             yDestination = area.getY()+area.getHeight()-getHeight();
         }
 

@@ -31,6 +31,8 @@ public class EntityManager implements ObjectToRender {
 
     @Override
     public void tick() {
-        entities.forEach(Entity::tick);
+        for(Entity entity : entities){
+            entity.tick();
+        }
     }
 }

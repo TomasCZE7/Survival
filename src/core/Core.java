@@ -22,6 +22,8 @@ public class Core extends Canvas implements Runnable {
     private boolean running = false;
     private Thread thread;
 
+    private Random random;
+
     private EnvironmentGenerator environmentGenerator;
 
     private ObjectManager objectManager;
@@ -36,6 +38,7 @@ public class Core extends Canvas implements Runnable {
         debugManager = new DebugManager();
         entityManager = new EntityManager();
         environmentGenerator = new EnvironmentGenerator();
+        random = new Random();
         initializeHandlers();
         start();
         generateEnvironment();
@@ -63,14 +66,14 @@ public class Core extends Canvas implements Runnable {
         }
     }
 
+    public Random getRandom() {
+        return random;
+    }
+
     @Override
     public void run() {
         objectManager.initialize();
         environmentGenerator.generateAI(8);
-        debugManager.addDebug("DEBUG", true);
-        debugManager.addDebug("sdf", true);
-        debugManager.addDebug("DEBUdfG", true);
-        debugManager.addDebug("DEBsdfsdfsdUG", true);
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
