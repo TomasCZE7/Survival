@@ -19,6 +19,10 @@ public abstract class DimensionalObject extends Velocity implements ObjectToShow
         this.fill = fill;
     }
 
+    public Point getCenter() {
+        return new Point((int)(getX()+(getWidth() /2)),(int)(getY()+(getHeight()/2)));
+    }
+
     public DimensionalObject(double x, double y, Color color, Dimension size, boolean fill) {
         this(x, y, color, size.getWidth(), size.getHeight());
     }

@@ -24,16 +24,19 @@ public abstract class AI extends Entity {
         super(x, y, color, size, fill);
     }
 
-    double movingTime = 0;
-    double movingTimeMax = 0;
-    double movingVelocity = 2;
+    private int movingTime = 0;
+    private int movingTimeMax = 0;
 
     @Override
     public void tick() {
         super.tick();
-        if(movingTime == movingTimeMax){
-            movingTimeMax = GameMain.core.getRandom().nextInt(100);
+        if(getCenter().distance(GameMain.core.getObjectManager().getPlayer().getCenter()) < 150 && getCenter().distance(GameMain.core.getObjectManager().getPlayer().getCenter()) > 1){
             resetVelocity();
+            moveToward(GameMain.core.getObjectManager().getPlayer().getCenter(), 1.25F);
+        } else if(movingTime >= movingTimeMax){
+            movingTimeMax = GameMain.core.getRandom().nextInt(100)+50;
+            resetVelocity();
+            double movingVelocity = 0.75;
             switch(GameMain.core.getRandom().nextInt(4)){
                 case 0:
                     setXVelocity(movingVelocity);
@@ -49,8 +52,8 @@ public abstract class AI extends Entity {
                     break;
             }
             movingTime = 0;
-        }else {
-            movingTime += 1;
         }
+        movingTime += 1;
     }
+
 }
