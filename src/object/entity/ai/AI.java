@@ -2,8 +2,10 @@ package object.entity.ai;
 
 import core.GameMain;
 import object.entity.Entity;
+import object.entity.ally.Player;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 public abstract class AI extends Entity {
 
@@ -30,7 +32,8 @@ public abstract class AI extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if(getCenter().distance(GameMain.core.getObjectManager().getPlayer().getCenter()) < 150 && getCenter().distance(GameMain.core.getObjectManager().getPlayer().getCenter()) > 1){
+        Player player = GameMain.core.getObjectManager().getPlayer();
+        if(getCenter().distance(player.getCenter()) < 150 && getCenter().distance(player.getCenter()) > 1){
             resetVelocity();
             moveToward(GameMain.core.getObjectManager().getPlayer().getCenter(), 1.25F);
         } else if(movingTime >= movingTimeMax){
@@ -52,6 +55,9 @@ public abstract class AI extends Entity {
                     break;
             }
             movingTime = 0;
+        }
+        if(getShape().intersects((Rectangle2D) player.getShape())){
+            player.damageEntity(getDamage());
         }
         movingTime += 1;
     }

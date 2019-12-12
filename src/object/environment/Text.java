@@ -57,7 +57,7 @@ public class Text extends DimensionalObject {
     }
 
     @Override
-    public Shape getShape(Graphics2D g) {
+    public Shape getShape() {
         return null;
     }
 }

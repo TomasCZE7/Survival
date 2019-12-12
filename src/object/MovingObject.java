@@ -29,11 +29,6 @@ public abstract class MovingObject extends DimensionalObject {
     }
 
     @Override
-    public Shape getShape(Graphics2D g) {
-        return null;
-    }
-
-    @Override
     public void tick() {
         move(getXVelocity(), getYVelocity());
     }
@@ -45,12 +40,4 @@ public abstract class MovingObject extends DimensionalObject {
         double dist = target.distance(getCenter());
         move(xDiff / dist * speed, yDiff / dist * speed);
     }
-    /*public void moveToward(Point target, float speed) {
-        double angle = Math.atan((float) (getCenter().getY() - target.getY()) / (float) (getCenter().getX() - target.getX()));
-        if (target.getX() >= getCenter().getX()) {
-            move(speed * (float) (Math.cos(angle)), speed * (float) (Math.sin(angle)));
-        } else {
-            move(speed * (float) -(Math.cos(angle)), speed * (float) -(Math.sin(angle)));
-        }
-    }*/
 }

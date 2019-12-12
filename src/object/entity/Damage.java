@@ -2,6 +2,6 @@ package object.entity;
 
 public interface Damage {
 
-    double getDefaultDamage();
+    double getDamage();
 
 }

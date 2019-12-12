@@ -14,13 +14,13 @@ public class BasicZombie extends AI implements Health, Damage {
     }
 
     @Override
-    public Shape getShape(Graphics2D g) {
+    public Shape getShape() {
         return new Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
     }
 
     @Override
-    public double getDefaultDamage() {
-        return 4;
+    public double getDamage() {
+        return 2;
     }
 
     @Override

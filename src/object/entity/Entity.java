@@ -9,7 +9,6 @@ import java.awt.*;
 public abstract class Entity extends MovingObject implements Registrable, Health, Damage {
 
     private double health;
-    private double realDamage;
 
     public Entity(double x, double y, Color color, double width, double height) {
         this(x, y, color, width, height, true);
@@ -22,7 +21,6 @@ public abstract class Entity extends MovingObject implements Registrable, Health
     public Entity(double x, double y, Color color, double width, double height, boolean fill) {
         super(x, y, color, width, height, fill);
         health = getMaxHealth();
-        realDamage = getDefaultDamage();
     }
 
     public Entity(double x, double y, Color color, Dimension size, boolean fill) {
@@ -38,13 +36,15 @@ public abstract class Entity extends MovingObject implements Registrable, Health
         return health;
     }
 
-    public double getRealDamage() {
-        return realDamage;
+
+    public void damageEntity(double damage){
+        health -= damage;
+        if(health <= 0){
+            die();
+        }
     }
 
-    @Override
-    public void tick() {
-        super.tick();
-        checkHealth(getHealth(), this);
+    public void die(){
+        GameMain.core.getEntityManager().removeEntity(this);
     }
 }

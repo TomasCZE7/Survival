@@ -20,7 +20,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public Shape getShape(Graphics2D g) {
+    public Shape getShape() {
         return new Rectangle2D.Double(getX(), getY(), getHeight(), getWidth());
     }
 
@@ -31,7 +31,12 @@ public class Player extends Entity {
         checkMovement();
     }
 
-    public void checkCollision(){
+    @Override
+    public void die() {
+        GameMain.restart();
+    }
+
+    private void checkCollision(){
 
     }
 
@@ -86,7 +91,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public double getDefaultDamage() {
+    public double getDamage() {
         return 3;
     }
 

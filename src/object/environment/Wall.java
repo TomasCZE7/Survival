@@ -12,7 +12,7 @@ public class Wall extends DimensionalObject {
     }
 
     @Override
-    public Shape getShape(Graphics2D g) {
+    public Shape getShape() {
         return new Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
     }
 }
