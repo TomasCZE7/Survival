@@ -32,14 +32,14 @@ public class Core extends Canvas implements Runnable {
     private DebugManager debugManager;
 
     Core(){
-        mainWindow = new Window(WIDTH, HEIGHT, "2D Platformer");
+        settings = new Settings();
+        mainWindow = new Window(settings.getHeight(), settings.getHeight(), "Survival");
         mainWindow.getWindow().add(this);
         objectManager = new ObjectManager();
         debugManager = new DebugManager();
         entityManager = new EntityManager();
         environmentGenerator = new EnvironmentGenerator();
         random = new Random();
-        settings = new Settings();
         initializeHandlers();
         start();
     }
@@ -86,7 +86,7 @@ public class Core extends Canvas implements Runnable {
 
         //Main cycle
         while (running) {
-            if(!settings.isPause()){
+            if(settings.isPause()){
                 continue;
             }
             long now = System.nanoTime();

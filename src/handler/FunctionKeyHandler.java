@@ -13,8 +13,10 @@ public class FunctionKeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        /*if(keyEvent == KeyEvent.VK_ESCAPE){
-        }*/
+        int key = keyEvent.getKeyCode();
+        if(key == KeyEvent.VK_ESCAPE){
+            GameMain.core.getSettings().setPause(!GameMain.core.getSettings().isPause());
+        }
     }
 
     @Override
