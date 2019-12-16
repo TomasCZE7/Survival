@@ -15,13 +15,11 @@ public class ObjectManager {
 
     //Main objects
     private Player player;
-    private PlayerMovementArea playerMovementArea;
     private Text fpsText;
 
     public void initialize() {
         player = new Player((Core.WIDTH+20)/2.0, (Core.HEIGHT+20)/2.0, Color.GRAY, 20, 20, true);
         fpsText = new Text(10, 20, Color.GRAY, "FPS: ", new Font("default", Font.BOLD, 15), true);
-        playerMovementArea = new PlayerMovementArea();
         new Wall(50, 50, Color.BLUE, 90, 60);
     }
 
@@ -104,7 +102,4 @@ public class ObjectManager {
         return fpsText;
     }
 
-    public PlayerMovementArea getPlayerMovementArea() {
-        return playerMovementArea;
-    }
 }

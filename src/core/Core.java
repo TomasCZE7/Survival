@@ -15,8 +15,6 @@ public class Core extends Canvas implements Runnable {
 
     private Window mainWindow;
 
-    public static final int WIDTH = 1080, HEIGHT = 740;
-    public static final boolean DEBUG = true;
     public static final Font defaultFont = new Font("default", Font.PLAIN, 15);
 
     private boolean running = false;
@@ -29,6 +27,8 @@ public class Core extends Canvas implements Runnable {
     private ObjectManager objectManager;
     private EntityManager entityManager;
 
+    private Settings settings;
+
     private DebugManager debugManager;
 
     Core(){
@@ -39,12 +39,14 @@ public class Core extends Canvas implements Runnable {
         entityManager = new EntityManager();
         environmentGenerator = new EnvironmentGenerator();
         random = new Random();
+        settings = new Settings();
         initializeHandlers();
         start();
-        generateEnvironment();
     }
 
     private void generateEnvironment() {
+        objectManager.initialize();
+        environmentGenerator.generateAI(8);
     }
 
     private void initializeHandlers(){
@@ -72,15 +74,21 @@ public class Core extends Canvas implements Runnable {
 
     @Override
     public void run() {
-        objectManager.initialize();
-        environmentGenerator.generateAI(8);
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
+
+        //First run
+        generateEnvironment();
+
+        //Main cycle
         while (running) {
+            if(!settings.isPause()){
+                continue;
+            }
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -94,7 +102,7 @@ public class Core extends Canvas implements Runnable {
             frames++;
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                if (DEBUG) {
+                if (settings.isDebug()) {
                     objectManager.getFpsText().setText("FPS: "+frames);
                 }
                 frames = 0;
@@ -133,6 +141,10 @@ public class Core extends Canvas implements Runnable {
         bs.show();
     }
 
+    public Settings getSettings() {
+        return settings;
+    }
+
     public EntityManager getEntityManager() {
         return entityManager;
     }
@@ -144,4 +156,6 @@ public class Core extends Canvas implements Runnable {
     public Window getMainWindow() {
         return mainWindow;
     }
+
+
 }

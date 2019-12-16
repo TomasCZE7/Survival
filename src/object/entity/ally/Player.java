@@ -12,11 +12,14 @@ import java.awt.geom.Rectangle2D;
 public class Player extends Entity {
 
     public double realX, realY;
+    public PlayerMovementArea area;
 
     public Player(double x, double y, Color color, double width, double height, boolean fill) {
         super(x, y, color, width, height, fill);
         realX = getX();
         realY = getY();
+        area = new PlayerMovementArea();
+
     }
 
     @Override
@@ -33,7 +36,7 @@ public class Player extends Entity {
 
     @Override
     public void die() {
-        GameMain.restart();
+      //  GameMain.restart();
     }
 
     private void checkCollision(){
@@ -41,7 +44,6 @@ public class Player extends Entity {
     }
 
     private void checkMovement(){
-        PlayerMovementArea area = GameMain.core.getObjectManager().getPlayerMovementArea();
         double xDestination = getX(), yDestination = getY();
         double xDifference = 0, yDifference = 0;
         //LEFT

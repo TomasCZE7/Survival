@@ -1,5 +1,6 @@
 package handler;
 
+import core.GameMain;
 import object.ObjectManager;
 import object.entity.ally.Player;
 
