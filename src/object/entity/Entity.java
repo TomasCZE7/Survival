@@ -6,7 +6,7 @@ import object.MovingObject;
 
 import java.awt.*;
 
-public abstract class Entity extends MovingObject implements Registrable, Health, Damage {
+public abstract class Entity extends MovingObject implements Registrable {
 
     private double health;
 
@@ -36,6 +36,9 @@ public abstract class Entity extends MovingObject implements Registrable, Health
         return health;
     }
 
+    public abstract double getDamage();
+
+    public abstract double getMaxHealth();
 
     public void damageEntity(double damage){
         health -= damage;
