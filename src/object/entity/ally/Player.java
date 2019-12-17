@@ -7,7 +7,7 @@ import object.Coordinates;
 import object.environment.Text;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
 
 public class Player extends Entity {
 
@@ -82,6 +82,13 @@ public class Player extends Entity {
             if(entity == this) continue;
             entity.move(xDifference, yDifference);
         }
+    }
+
+    @Override
+    public void render(Graphics2D g) {
+        super.render(g);
+        Shape circle = new Ellipse2D.Double(10, 10, 350, 350);
+        g.draw(circle);
     }
 
     public double getRealX() {

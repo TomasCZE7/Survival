@@ -39,6 +39,11 @@ public abstract class DimensionalObject extends Velocity implements ObjectToShow
     @Override
     public void render(Graphics2D g) {
         g.setColor(getColor());
+        if(getAdditionalShapes().length > 0){
+            for(Shape shape : getAdditionalShapes()){
+                g.draw(shape);
+            }
+        }
         if(isFill())
             g.fill(getShape());
         else

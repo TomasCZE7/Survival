@@ -17,8 +17,8 @@ public class EnvironmentGenerator {
     }
 
     public double[] getRandomLocationOnScreen(){
-        double randomX = Core.WIDTH * random.nextDouble();
-        double randomY =  Core.HEIGHT * random.nextDouble();
+        double randomX = GameMain.core.getSettings().getWidth() * random.nextDouble();
+        double randomY =  GameMain.core.getSettings().getHeight() * random.nextDouble();
         return new double[] {randomX, randomY};
     }
 

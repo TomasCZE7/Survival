@@ -130,9 +130,8 @@ public class Core extends Canvas implements Runnable {
         }
 
         Graphics2D g2d = (Graphics2D) g;
-
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.fillRect(0, 0, settings.getWidth(), settings.getHeight());
 
         objectManager.render(g2d);
         entityManager.render(g2d);
