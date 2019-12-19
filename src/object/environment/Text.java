@@ -1,6 +1,7 @@
 package object.environment;
 
 import core.Core;
+import core.component.shape.CustomShape;
 import object.DimensionalObject;
 
 import java.awt.*;
@@ -57,7 +58,7 @@ public class Text extends DimensionalObject {
     }
 
     @Override
-    public Shape getShape() {
+    public CustomShape getCustomShape() {
         return null;
     }
 }

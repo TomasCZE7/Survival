@@ -2,6 +2,8 @@ package object.environment;
 
 import core.Core;
 import core.GameMain;
+import core.component.shape.CustomShape;
+import core.component.shape.RectangleShape;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -11,14 +13,14 @@ public class PlayerMovementArea {
     private double x, y, width, height;
 
     public PlayerMovementArea() {
-        x = GameMain.core.getSettings().getWidth()/3.0;
-        y =  GameMain.core.getSettings().getHeight()/4.5;
         width =  GameMain.core.getSettings().getWidth()/3.0;
         height =  GameMain.core.getSettings().getWidth()/3.0;
+        x = GameMain.core.getSettings().getWidth()/3.0-width/2;
+        y =  GameMain.core.getSettings().getHeight()/3.0-width/3.0;
     }
 
-    public Shape getShape(){
-        return new Rectangle2D.Double(x, y, width, height);
+    public CustomShape getCustomShape(){
+        return new RectangleShape(x, y, width, height, Color.RED);
     }
 
 

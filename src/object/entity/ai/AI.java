@@ -56,7 +56,7 @@ public abstract class AI extends Entity {
             }
             movingTime = 0;
         }
-        if(getShape().intersects((Rectangle2D) player.getShape())){
+        if(getCustomShape().getShape().intersects((Rectangle2D) player.getCustomShape().getShape())){
             player.damageEntity(getDamage());
         }
         movingTime += 1;

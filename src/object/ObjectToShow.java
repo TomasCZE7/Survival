@@ -1,9 +1,13 @@
 package object;
 
-import java.awt.*;
+import core.component.shape.CustomShape;
 
 public interface ObjectToShow extends ObjectToRender {
 
-    Shape getShape();
+    CustomShape getCustomShape();
+
+    default CustomShape[] getAdditionalShapes(){
+        return new CustomShape[]{};
+    }
 
 }

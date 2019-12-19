@@ -1,5 +1,7 @@
 package object.environment;
 
+import core.component.shape.CustomShape;
+import core.component.shape.RectangleShape;
 import object.DimensionalObject;
 
 import java.awt.*;
@@ -12,7 +14,7 @@ public class Wall extends DimensionalObject {
     }
 
     @Override
-    public Shape getShape() {
-        return new Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
+    public CustomShape getCustomShape() {
+        return new RectangleShape(getX(), getY(), getWidth(), getHeight(), getColor(), true);
     }
 }

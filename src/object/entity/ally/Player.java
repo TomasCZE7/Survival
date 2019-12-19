@@ -1,6 +1,8 @@
 package object.entity.ally;
 
 import core.GameMain;
+import core.component.shape.CustomShape;
+import core.component.shape.RectangleShape;
 import object.entity.Entity;
 import object.environment.PlayerMovementArea;
 import object.Coordinates;
@@ -23,8 +25,8 @@ public class Player extends Entity {
     }
 
     @Override
-    public Shape getShape() {
-        return new Rectangle2D.Double(getX(), getY(), getHeight(), getWidth());
+    public CustomShape getCustomShape() {
+        return new RectangleShape(getX(), getY(), getHeight(), getWidth(), Color.GRAY, true);
     }
 
     @Override
@@ -87,8 +89,15 @@ public class Player extends Entity {
     @Override
     public void render(Graphics2D g) {
         super.render(g);
-        Shape circle = new Ellipse2D.Double(10, 10, 350, 350);
-        g.draw(circle);
+        Shape shape = new Ellipse2D.Double(40, 40, 20, 10);
+        g.draw(shape);
+    }
+
+    @Override
+    public CustomShape[] getAdditionalShapes() {
+        return new CustomShape[]{
+                area.getCustomShape()
+        };
     }
 
     public double getRealX() {

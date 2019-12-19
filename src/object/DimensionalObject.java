@@ -1,6 +1,7 @@
 package object;
 
 import core.GameMain;
+import core.component.shape.CustomShape;
 
 import java.awt.*;
 
@@ -40,14 +41,11 @@ public abstract class DimensionalObject extends Velocity implements ObjectToShow
     public void render(Graphics2D g) {
         g.setColor(getColor());
         if(getAdditionalShapes().length > 0){
-            for(Shape shape : getAdditionalShapes()){
-                g.draw(shape);
+            for(CustomShape shape : getAdditionalShapes()){
+                shape.draw(g);
             }
         }
-        if(isFill())
-            g.fill(getShape());
-        else
-            g.draw(getShape());
+        getCustomShape().draw(g);
     }
 
 
