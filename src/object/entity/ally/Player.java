@@ -3,10 +3,9 @@ package object.entity.ally;
 import core.GameMain;
 import core.component.shape.CustomShape;
 import core.component.shape.RectangleShape;
+import object.GameObject;
 import object.entity.Entity;
 import object.environment.PlayerMovementArea;
-import object.Coordinates;
-import object.environment.Text;
 
 import java.awt.*;
 import java.awt.geom.*;
@@ -16,8 +15,8 @@ public class Player extends Entity {
     public double realX, realY;
     public PlayerMovementArea area;
 
-    public Player(double x, double y, Color color, double width, double height, boolean fill) {
-        super(x, y, color, width, height, fill);
+    public Player(double x, double y, double width, double height) {
+        super(x, y, width, height);
         realX = getX();
         realY = getY();
         area = new PlayerMovementArea();
@@ -26,7 +25,7 @@ public class Player extends Entity {
 
     @Override
     public CustomShape getCustomShape() {
-        return new RectangleShape(getX(), getY(), getHeight(), getWidth(), Color.GRAY, true);
+        return new RectangleShape(getX(), getY(), getHeight(), getWidth()).setColor(Color.GRAY).setFilled(true);
     }
 
     @Override
@@ -70,12 +69,9 @@ public class Player extends Entity {
         }
 
         teleport(xDestination, yDestination);
-        for(Coordinates object : GameMain.core.getObjectManager().getAllObjects()){
-            if(object instanceof Text){
-                Text text = (Text) object;
-                if(text.isFixedOnScreen()){
-                    continue;
-                }
+        for(GameObject object : GameMain.core.getObjectManager().getObjects()){
+            if(object.getCustomShape().isSticky()){
+                continue;
             }
             object.move(xDifference, yDifference);
         }

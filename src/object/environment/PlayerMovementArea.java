@@ -20,7 +20,7 @@ public class PlayerMovementArea {
     }
 
     public CustomShape getCustomShape(){
-        return new RectangleShape(x, y, width, height, Color.RED);
+        return new RectangleShape(x, y, width, height).setColor(Color.RED);
     }
 
 

@@ -10,20 +10,8 @@ import java.awt.geom.Rectangle2D;
 public abstract class AI extends Entity {
 
 
-    public AI(double x, double y, Color color, double width, double height) {
-        super(x, y, color, width, height);
-    }
-
-    public AI(double x, double y, Color color, Dimension size) {
-        super(x, y, color, size);
-    }
-
-    public AI(double x, double y, Color color, double width, double height, boolean fill) {
-        super(x, y, color, width, height, fill);
-    }
-
-    public AI(double x, double y, Color color, Dimension size, boolean fill) {
-        super(x, y, color, size, fill);
+    public AI(double x, double y, double width, double height) {
+        super(x, y, width, height);
     }
 
     private int movingTime = 0;

@@ -8,13 +8,13 @@ import java.awt.geom.Rectangle2D;
 
 public class BasicZombie extends AI {
 
-    public BasicZombie(double x, double y, Color color, double width, double height) {
-        super(x, y, color, width, height);
+    public BasicZombie(double x, double y, double width, double height) {
+        super(x, y, width, height);
     }
 
     @Override
     public CustomShape getCustomShape() {
-        return new RectangleShape(getX(), getY(), getWidth(), getHeight(), getColor(), true);
+        return new RectangleShape(getX(), getY(), getWidth(), getHeight()).setColor(getColor()).setFilled(true);
     }
 
     @Override

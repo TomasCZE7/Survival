@@ -1,10 +1,8 @@
 package object;
 
-import core.Core;
 import core.GameMain;
+import core.component.shape.TextShape;
 import object.entity.ally.Player;
-import object.environment.PlayerMovementArea;
-import object.environment.Text;
 import object.environment.Wall;
 
 import java.awt.*;
@@ -12,16 +10,17 @@ import java.util.ArrayList;
 
 public class ObjectManager {
 
-    private ArrayList<Coordinates> objects = new ArrayList<>();
+    private ArrayList<GameObject> objects = new ArrayList<>();
+    private ArrayList<TextShape> texts = new ArrayList<>();
 
     //Main objects
     private Player player;
-    private Text fpsText;
+    private TextShape fpsText;
 
     public void initialize() {
-        player = new Player(( GameMain.core.getSettings().getWidth()+20)/2.0, (GameMain.core.getSettings().getHeight()+20)/2.0, Color.GRAY, 20, 20, true);
-        fpsText = new Text(10, 20, Color.GRAY, "FPS: ", new Font("default", Font.BOLD, 15), true);
-        new Wall(50, 50, Color.BLUE, 90, 60);
+        player = (Player)new Player(( GameMain.core.getSettings().getWidth()+20)/2.0, (GameMain.core.getSettings().getHeight()+20)/2.0, 20, 20).setColor(Color.GREEN).setFill(true);
+        fpsText = (TextShape) new TextShape(10, 20, "FPS: ").setFont(new Font("default", Font.BOLD, 15)).setSticky(true).setColor(Color.GRAY);
+        new Wall(50, 50, 90, 60).setColor(Color.BLUE).setFill(true);
     }
 
     public Player getPlayer() {
@@ -29,77 +28,33 @@ public class ObjectManager {
     }
 
     public void render(Graphics2D g){
-        for(ObjectToShow object : getObjectsToShow()){
+        for(GameObject object : objects){
             object.render(g);
+        }
+        for(TextShape text : texts){
+            text.render(g);
         }
     }
 
     public void tick() {
-        for (ObjectToShow object : getObjectsToShow()) {
+        for (GameObject object : objects) {
             object.tick();
         }
     }
 
-    public void addObject(Coordinates object){
+    public void addText(TextShape text){
+        texts.add(text);
+    }
+
+    public void addObject(GameObject object){
         objects.add(object);
     }
 
-    public void addMovingObject(MovingObject object){
-        addObject(object);
-    }
-
-    public void addDimensionalObject(DimensionalObject object){
-        addObject(object);
-    }
-
-    public ArrayList<DimensionalObject> getDimensionalObjects() {
-        ArrayList<DimensionalObject> objects = new ArrayList<>();
-        for(Coordinates bs : getAllObjects()){
-            if(bs instanceof DimensionalObject){
-                objects.add((DimensionalObject) bs);
-            }
-        }
+    public ArrayList<GameObject> getObjects(){
         return objects;
     }
 
-    public ArrayList<MovingObject> getMovingObjects() {
-        ArrayList<MovingObject> objects = new ArrayList<>();
-        for (Coordinates bs : getAllObjects()) {
-            if (bs instanceof MovingObject) {
-                objects.add((MovingObject) bs);
-            }
-        }
-        return objects;
-    }
-
-    public ArrayList<ObjectToShow> getObjectsToShow() {
-        ArrayList<ObjectToShow> list = new ArrayList<>();
-        for(Coordinates object : getAllObjects()){
-            if(object instanceof ObjectToShow){
-                ObjectToShow objectToShow = (ObjectToShow) object;
-                list.add(objectToShow);
-            }
-        }
-        return list;
-    }
-
-    public ArrayList<ObjectToRender> getObjectsToRender() {
-        ArrayList<ObjectToRender> list = new ArrayList<>();
-        for(Coordinates object : getAllObjects()){
-            if(object instanceof ObjectToRender){
-                ObjectToRender objectToShow = (ObjectToRender) object;
-                list.add(objectToShow);
-            }
-        }
-        return list;
-    }
-
-
-    public ArrayList<Coordinates> getAllObjects(){
-        return objects;
-    }
-
-    public Text getFpsText() {
+    public TextShape getFpsText() {
         return fpsText;
     }
 

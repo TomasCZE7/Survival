@@ -2,29 +2,16 @@ package object.entity;
 
 import core.GameMain;
 import object.Registrable;
-import object.MovingObject;
+import object.GameObject;
 
 import java.awt.*;
 
-public abstract class Entity extends MovingObject implements Registrable {
+public abstract class Entity extends GameObject implements Registrable {
 
     private double health;
 
-    public Entity(double x, double y, Color color, double width, double height) {
-        this(x, y, color, width, height, true);
-    }
-
-    public Entity(double x, double y, Color color, Dimension size) {
-        this(x, y, color, size.getWidth(), size.getHeight(), true);
-    }
-
-    public Entity(double x, double y, Color color, double width, double height, boolean fill) {
-        super(x, y, color, width, height, fill);
-        health = getMaxHealth();
-    }
-
-    public Entity(double x, double y, Color color, Dimension size, boolean fill) {
-        this(x, y, color, size.getWidth(), size.getHeight(), fill);
+    public Entity(double x, double y, double width, double height) {
+        super(x, y, width, height);
     }
 
    @Override

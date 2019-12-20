@@ -25,7 +25,7 @@ public class EnvironmentGenerator {
     public void generateAI(int count){
         for(int i = 0; i <= count; i++){
             double[] random = getRandomLocationOnScreen();
-            new BasicZombie(random[0], random[0], Color.RED, 30, 30);
+            new BasicZombie(random[0], random[1], 30, 30).setColor(Color.RED);
         }
     }
 
