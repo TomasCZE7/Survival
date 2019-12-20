@@ -22,6 +22,7 @@ public abstract class GameObject implements Registrable {
         this.height = height;
         this.color = Color.BLACK;
         this.fill = false;
+        register();
     }
 
     public GameObject setColor(Color color) {
@@ -32,6 +33,10 @@ public abstract class GameObject implements Registrable {
     public GameObject setFill(boolean fill) {
         this.fill = fill;
         return this;
+    }
+
+    public boolean isFill() {
+        return fill;
     }
 
     public abstract  CustomShape getCustomShape();
@@ -60,7 +65,6 @@ public abstract class GameObject implements Registrable {
     }
 
     public void render(Graphics2D g) {
-        g.setColor(getColor());
         if(getAdditionalShapes().length > 0){
             for(CustomShape shape : getAdditionalShapes()){
                 shape.draw(g);

@@ -14,7 +14,7 @@ public class BasicZombie extends AI {
 
     @Override
     public CustomShape getCustomShape() {
-        return new RectangleShape(getX(), getY(), getWidth(), getHeight()).setColor(getColor()).setFilled(true);
+        return new RectangleShape(getX(), getY(), getWidth(), getHeight()).setColor(getColor()).setFilled(isFill());
     }
 
     @Override
