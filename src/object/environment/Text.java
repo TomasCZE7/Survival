@@ -1,18 +1,52 @@
 package object.environment;
 
-import core.component.shape.TextShape;
-import object.Registrable;
+import core.Core;
+import core.component.shape.CustomShape;
+import object.GameObject;
 
-public class Text extends TextShape implements Registrable {
+import java.awt.*;
 
-    public Text(double xPos, double yPos, String text) {
-        super(xPos, yPos, text);
-        register();
+public class Text /*extends GameObject */ {
+/*
+    private String text;
+    private Font font;
+    private boolean fixedOnScreen;
+
+    public Text(double x, double y, Color color, String text, boolean fixedOnScreen) {
+        super(x, y, color, 0, 0);
+        this.text = text;
+        this.fixedOnScreen = fixedOnScreen;
     }
 
     @Override
-    public void register() {
-
+    public void render(Graphics2D g) {
+        g.setColor(getColor());
+        if (this.font != null) {
+            g.setFont(font);
+        }
+        g.drawString(text, (int) getX(), (int) getY());
+        g.setFont(Core.defaultFont);
     }
 
+    public boolean isFixedOnScreen() {
+        return fixedOnScreen;
+    }
+
+    public void setFont(Font font) {
+        this.font = font;
+    }
+
+    public Font getFont() {
+        return font;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public CustomShape getCustomShape() {
+        return null;
+    }
+*/
 }

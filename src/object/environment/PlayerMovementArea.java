@@ -13,17 +13,15 @@ public class PlayerMovementArea {
     private double x, y, width, height;
 
     public PlayerMovementArea() {
-        width =  GameMain.core.getSettings().getWidth()/3.0;
-        height =  GameMain.core.getSettings().getWidth()/3.0;
-        x = GameMain.core.getSettings().getWidth()/3.0-width/2;
-        y =  GameMain.core.getSettings().getHeight()/3.0-width/3.0;
+        this.width =  GameMain.core.getSettings().getWidth()/3.0;
+        this.height =  GameMain.core.getSettings().getWidth()/3.0;
+        this.x = GameMain.core.getSettings().getWidth()/3.0-width/2;
+        this.y =  GameMain.core.getSettings().getHeight()/3.0-width/3.0;
     }
 
     public CustomShape getCustomShape(){
         return new RectangleShape(x, y, width, height).setColor(Color.RED);
     }
-
-
 
     public double getX() {
         return x;

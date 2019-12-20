@@ -9,7 +9,6 @@ import java.awt.geom.Rectangle2D;
 
 public abstract class AI extends Entity {
 
-
     public AI(double x, double y, double width, double height) {
         super(x, y, width, height);
     }
@@ -21,7 +20,8 @@ public abstract class AI extends Entity {
     public void tick() {
         super.tick();
         Player player = GameMain.core.getObjectManager().getPlayer();
-        if(getCenter().distance(player.getCenter()) < 150 && getCenter().distance(player.getCenter()) > 1){
+        boolean intersectsPlayer = getCustomShape().getShape().intersects(player.getCustomShape().getShape().getBounds2D());
+        if(getCenter().distance(player.getCenter()) < 150 && getCenter().distance(player.getCenter()) > player.getWidth()/1.3){
             resetVelocity();
             moveToward(GameMain.core.getObjectManager().getPlayer().getCenter(), 1.25F);
         } else if(movingTime >= movingTimeMax){
@@ -44,7 +44,7 @@ public abstract class AI extends Entity {
             }
             movingTime = 0;
         }
-        if(getCustomShape().getShape().intersects((Rectangle2D) player.getCustomShape().getShape())){
+        if(intersectsPlayer){
             player.damageEntity(getDamage());
         }
         movingTime += 1;

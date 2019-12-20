@@ -3,6 +3,7 @@ package object.entity.ally;
 import core.GameMain;
 import core.component.shape.CustomShape;
 import core.component.shape.RectangleShape;
+import core.component.shape.TextShape;
 import object.GameObject;
 import object.entity.Entity;
 import object.environment.PlayerMovementArea;
@@ -17,9 +18,9 @@ public class Player extends Entity {
 
     public Player(double x, double y, double width, double height) {
         super(x, y, width, height);
-        realX = getX();
-        realY = getY();
-        area = new PlayerMovementArea();
+        this.realX = getX();
+        this.realY = getY();
+        this.area = new PlayerMovementArea();
 
     }
 
@@ -33,6 +34,10 @@ public class Player extends Entity {
         super.tick();
         checkCollision();
         checkMovement();
+        GameMain.core.getDebugManager().update("playerRealX", getRealX() + " {"+ getX() +"}");
+        GameMain.core.getDebugManager().update("playerRealY", getRealY() + " {"+ getY() +"}");
+        GameMain.core.getDebugManager().update("playerXVel", getXVelocity());
+        GameMain.core.getDebugManager().update("playerYVel", getYVelocity());
     }
 
     @Override
@@ -68,8 +73,11 @@ public class Player extends Entity {
             yDestination = area.getY()+area.getHeight()-getHeight();
         }
 
+        realX -= xDifference;
+        realY -= yDifference;
+
         teleport(xDestination, yDestination);
-        for(GameObject object : GameMain.core.getObjectManager().getObjects()){
+        for(GameObject object : GameMain.core.getObjectManager().getObjects() ){
             if(object.getCustomShape().isSticky()){
                 continue;
             }
@@ -81,14 +89,6 @@ public class Player extends Entity {
             entity.move(xDifference, yDifference);
         }
     }
-
-    @Override
-    public void render(Graphics2D g) {
-        super.render(g);
-        Shape shape = new Ellipse2D.Double(40, 40, 20, 10);
-        g.draw(shape);
-    }
-
     @Override
     public CustomShape[] getAdditionalShapes() {
         return new CustomShape[]{

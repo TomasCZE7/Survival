@@ -2,11 +2,12 @@ package core.component.shape;
 
 import core.Core;
 import core.GameMain;
+import object.GameObject;
 import object.Registrable;
 
 import java.awt.*;
 
-public class TextShape extends CustomShape {
+public class TextShape extends CustomShape implements Registrable{
 
     private String text = "";
     private Font font;
@@ -15,6 +16,7 @@ public class TextShape extends CustomShape {
         super(xPos, yPos);
         this.text = text;
         this.font = Core.defaultFont;
+        register();
     }
 
     public TextShape setFont(Font font) {
@@ -47,5 +49,10 @@ public class TextShape extends CustomShape {
 
     public Font getFont() {
         return font;
+    }
+
+    @Override
+    public void register() {
+        GameMain.core.getObjectManager().addText(this);
     }
 }

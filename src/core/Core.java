@@ -83,6 +83,7 @@ public class Core extends Canvas implements Runnable {
 
         //First run
         generateEnvironment();
+        makeDebug();
 
         //Main cycle
         while (running) {
@@ -109,6 +110,13 @@ public class Core extends Canvas implements Runnable {
             }
         }
         stop();
+    }
+
+    private void makeDebug() {
+        debugManager.addDebug("playerRealX", "");
+        debugManager.addDebug("playerRealY", "");
+        debugManager.addDebug("playerXVel", "");
+        debugManager.addDebug("playerYVel", "");
     }
 
     private void tick()
@@ -156,5 +164,7 @@ public class Core extends Canvas implements Runnable {
         return mainWindow;
     }
 
-
+    public DebugManager getDebugManager() {
+        return debugManager;
+    }
 }

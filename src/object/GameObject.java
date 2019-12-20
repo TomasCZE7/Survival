@@ -4,6 +4,9 @@ import core.GameMain;
 import core.component.shape.CustomShape;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class GameObject implements Registrable {
 
@@ -39,7 +42,13 @@ public abstract class GameObject implements Registrable {
         return fill;
     }
 
-    public abstract  CustomShape getCustomShape();
+    public List<CustomShape> getAllShapes(){
+        List<CustomShape> shapes = new ArrayList<>(Arrays.asList(getAdditionalShapes()));
+        shapes.add(getCustomShape());
+        return shapes;
+    }
+
+    public abstract CustomShape getCustomShape();
 
     public CustomShape[] getAdditionalShapes(){
         return new CustomShape[]{};

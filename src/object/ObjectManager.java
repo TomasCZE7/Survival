@@ -20,7 +20,8 @@ public class ObjectManager {
     public void initialize() {
         player = (Player)new Player(( GameMain.core.getSettings().getWidth()+20)/2.0, (GameMain.core.getSettings().getHeight()+20)/2.0, 20, 20).setColor(Color.GREEN).setFill(true);
         fpsText = (TextShape) new TextShape(10, 20, "FPS: ").setFont(new Font("default", Font.BOLD, 15)).setSticky(true).setColor(Color.GRAY);
-        new Wall(50, 50, 90, 60).setColor(Color.BLUE).setFill(true);
+        new Wall(50, 50, 90, 60).setColor(Color.BLUE).setFill(true).setFill(true);
+        new TextShape(100, 100, "Test").setSticky(false);
     }
 
     public Player getPlayer() {
@@ -58,4 +59,7 @@ public class ObjectManager {
         return fpsText;
     }
 
+    public ArrayList<TextShape> getTexts() {
+        return texts;
+    }
 }

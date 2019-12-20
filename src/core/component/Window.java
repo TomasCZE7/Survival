@@ -19,7 +19,7 @@ public class Window {
         window.setMinimumSize(size);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocation(50, 50);
-        window.show();
+        window.setVisible(true);
     }
 
     public JFrame getWindow() {

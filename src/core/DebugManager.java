@@ -17,7 +17,7 @@ public class DebugManager {
     public void addDebug(String name, Object object, boolean showUpperCase){
         if(!GameMain.core.getSettings().isDebug())
             return;
-        TextShape text = (TextShape) new TextShape(5, 30+(20.0*(debugs.size()+1)), showUpperCase ? name.toUpperCase() : name+": "+object).setFont(new Font("default", Font.PLAIN, 17)).setSticky(true).setColor(Color.RED);
+        TextShape text = (TextShape) new TextShape(5, 30+(20.0*(debugs.size()+1)), showUpperCase ? name.toUpperCase() : name+": "+object).setFont(new Font("default", Font.PLAIN, 17)).setSticky(false).setColor(Color.RED);
         debugs.put(name, text);
     }
 
